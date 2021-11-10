@@ -16,6 +16,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import WatchTwoToneIcon from '@mui/icons-material/WatchTwoTone';
 import LoginIcon from '@mui/icons-material/Login';
 import { Avatar, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 
@@ -201,8 +202,10 @@ const Navbar = () => {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
+              as={Link}
+              to='/login'
             >
-               <Button color="inherit">Login <LoginIcon fontSize="small" /></Button>
+               <LoginIcon />
                 
               
             </IconButton>

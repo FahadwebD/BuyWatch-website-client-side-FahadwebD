@@ -1,5 +1,6 @@
 [
     {
+        "id":1,
         "name":"rolax",
         "dis-price":1400,
         "mainprice":1500,
@@ -7,8 +8,9 @@
         "brand":"Rol"
 
     },
-    {
-        "name":"rolax",
+    {   
+        "id":2,
+        "name":"rolax2",
         "dis-price":1400,
         "mainprice":1500,
         "dis":100,
@@ -16,7 +18,8 @@
 
     }, 
     {
-        "name":"rolax",
+        "id":3,
+        "name":"rolax3",
         "dis-price":1400,
         "mainprice":1500,
         "dis":100,
@@ -24,7 +27,17 @@
 
     }, 
     {
-        "name":"rolax",
+        "id":4,
+        "name":"rolax4",
+        "dis-price":1400,
+        "mainprice":1500,
+        "dis":100,
+        "brand":"Rol"
+
+    },
+    {   
+         "id":5,
+        "name":"rolax5",
         "dis-price":1400,
         "mainprice":1500,
         "dis":100,
@@ -32,15 +45,8 @@
 
     },
     {
-        "name":"rolax",
-        "dis-price":1400,
-        "mainprice":1500,
-        "dis":100,
-        "brand":"Rol"
-
-    },
-    {
-        "name":"rolax",
+        "id":6,
+        "name":"rolax6",
         "dis-price":1400,
         "mainprice":1500,
         "dis":100,

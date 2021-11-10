@@ -1,18 +1,10 @@
 import { Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import useProducts from '../../../../hooks/useProducts';
 import Watch from '../Watch/Watch';
 import './Watches.css'
 const Watches = () => {
-    const [products , setProducts] = useState([])
-
-    useEffect(()=>{
-
-        fetch('./watch.json')
-        .then(res => res.json())
-        .then(data => setProducts(data))
-
-
-    } , [])
+    const [products] = useProducts()
     return (
         <Container>
             <div className='products-grid'>

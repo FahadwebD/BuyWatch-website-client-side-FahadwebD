@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './Watch.css'
+import { Link } from 'react-router-dom';
 
 const Watch = ({watch}) => {
  
     console.log(watch)
-    
-    const test = (name)=>{
-console.log(name)
-    }
+    const {name , id} = watch
+    const url = `/details/${id}`
+  
 
     return (
         <div>
@@ -20,13 +20,13 @@ console.log(name)
 		</div>
 		<div className="product-details">
 			<span className="product-catagory">Men,Watch</span>
-			<h4><a href="/">Mens leather Watch</a></h4>
+			<h4><a href="/">{name}</a></h4>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
 			<div className="product-bottom-details">
 				<div className="product-price"><small>$96.00</small>$230.99</div>
 				<div className="product-links">
                 <a href="/"><i className="fa fa-heart"><FavoriteIcon/></i></a>
-                <a><i onClick={()=>watch.test(watch.name)} className="fa fa-shopping-cart"><ShoppingCartIcon/></i></a>
+                <Link to={url}> <i className="fa fa-shopping-cart"><ShoppingCartIcon/></i> </Link>
 					
 					
 				</div>
