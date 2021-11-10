@@ -1,0 +1,13 @@
+.products-grid{
+   
+    display: grid;
+    grid-template-columns: repeat( 3 , 1fr);
+    
+  
+}
+
+@media(max-width: 960px){
+    .products-grid{
+      grid-template-columns: repeat(1, 1fr); 
+    }
+  }
