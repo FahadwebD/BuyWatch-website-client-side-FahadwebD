@@ -1,11 +1,11 @@
 import { Alert, CircularProgress } from '@mui/material';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 const Register = () => {
     const [loginData, setLoginData] = useState({});
-
+    const history = useHistory()
     const {registerUser , isLoading , user , authError} = useAuth();
 
     const handleOnChange = e => {
@@ -13,7 +13,7 @@ const Register = () => {
         const value = e.target.value;
         const newLoginData = { ...loginData };
         newLoginData[field] = value;
-        console.log(newLoginData)
+       
         setLoginData(newLoginData);
    
     }
@@ -23,7 +23,7 @@ const Register = () => {
            alert('your password did not match')
            return;
        }
-       registerUser(loginData.email , loginData.password)
+       registerUser(loginData.email , loginData.password , loginData.name, history)
         e.preventDefault();
     }
     return (
@@ -40,16 +40,20 @@ const Register = () => {
         <p className="welcome-message">Please, provide login credential to proceed and have access to all our services</p>
 
         <form className="login-form" type='submit' onSubmit={handleLoginSubmit}>
-            <div className="form-control">
-                <input name="email" type="email" placeholder="email" onChange={handleOnChange}/>
+        <div className="form-control">
+                <input name="name" type="text" placeholder="name" onBlur={handleOnChange}/>
                 <i className="fas fa-user"></i>
             </div>
             <div className="form-control">
-                <input name="password" type="password" placeholder="Password" onChange={handleOnChange}/>
+                <input name="email" type="email" placeholder="email" onBlur={handleOnChange}/>
+                <i className="fas fa-user"></i>
+            </div>
+            <div className="form-control">
+                <input name="password" type="password" placeholder="Password" onBlur={handleOnChange}/>
                 <i className="fas fa-lock"></i>
             </div>
             <div className="form-control">
-                <input name="password2" type="password" placeholder="Retype-Password" onChange={handleOnChange}/>
+                <input name="password2" type="password" placeholder="Retype-Password" onBlur={handleOnChange}/>
                 <i className="fas fa-lock"></i>
             </div>
 

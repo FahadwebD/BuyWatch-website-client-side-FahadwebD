@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import './Watch.css'
-import { Link } from 'react-router-dom';
 
-const Watch = ({watch}) => {
- 
-    
+
+
+const MoreWatchesCard = ({watch}) => {
     const {name , key ,img ,brand ,shop , price ,mainPrice ,discount} = watch
     const url = `/details/${key}`
-  
-
+    console.log(watch)
     return (
         <div>
-            	<div className="product-card">
+           <div className="product-card">
 		<div className="badge">{discount}</div>
 		<div className="product-tumb">
 			<img style={{height:300}} src={img} alt=""/>
@@ -33,8 +31,9 @@ const Watch = ({watch}) => {
 			</div>
 		</div>
 	</div>
+            
         </div>
     );
 };
 
-export default Watch;
+export default MoreWatchesCard;

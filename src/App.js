@@ -8,7 +8,8 @@ import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
-import MoreWatch from './Pages/MoreWatch/MoreWatch';
+
+import MoreWatches from './Pages/MoreWatch/MoreWatches/MoreWatches';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
        <Details></Details>
        </Route>
        <PrivateRoute exact path ='/explore'>
-         <MoreWatch></MoreWatch>
+         <MoreWatches></MoreWatches>
        </PrivateRoute>
      </Switch>
      <Route exact path='/login'>

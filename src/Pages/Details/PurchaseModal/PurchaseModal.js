@@ -8,6 +8,7 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import useAuth from '../../../hooks/useAuth';
 
 
 
@@ -25,8 +26,11 @@ const style = {
 };
 
 const PurchaseModal = ({detail ,  openPurchase, handlePurchaseClose}) => {
-    const {name ,mainprice ,id} = detail
-    const initialInfo = { coustomerName: "fahad", email: "fahad64@", phone: '' }
+    
+    const {name ,price ,key} = detail;
+    const{user} = useAuth();
+    
+    const initialInfo = { customerName: user.displayName, email: user.email, phone: '' }
     const [orderInfo, setOrderInfo] = useState(initialInfo);
 
   
@@ -35,15 +39,17 @@ const PurchaseModal = ({detail ,  openPurchase, handlePurchaseClose}) => {
         const value = e.target.value;
         const newInfo = { ...orderInfo };
         newInfo[field] = value;
+        console.log(orderInfo)
         setOrderInfo(newInfo);
     }
     const handleBookingSubmit = e => {
-        // collect data
+       
         const ordered = {
             ...orderInfo,
            
             item: name,
-            itemId:id,
+            itemId:key,
+            itemPrice:price
           
         }
         console.log(ordered)
@@ -63,55 +69,59 @@ const PurchaseModal = ({detail ,  openPurchase, handlePurchaseClose}) => {
             timeout: 500,
         }}
     >
-        <Fade in={openPurchase}>
-            <Box sx={style}>
-                <Typography id="transition-modal-title" variant="h6" component="h2">
-                    {detail.name}
-                </Typography>
-                <form  onSubmit={handleBookingSubmit} >
-                    <TextField
-                        disabled
-                        sx={{ width: '90%', m: 1 }}
-                        id="outlined-size-small"
-                        defaultValue={mainprice}
-                        size="small"
-                    />
-                    <TextField
-                        sx={{ width: '90%', m: 1 }}
-                        id="outlined-size-small"
-                        name="coustomerName"
-                        onBlur={handleOnBlur}
-                        
-                        size="small"
-                    />
-                    <TextField
-                        sx={{ width: '90%', m: 1 }}
-                        id="outlined-size-small"
-                        name="email"
-                  
-                        onBlur={handleOnBlur}
-                        size="small"
-                    />
-                    <TextField
-                        sx={{ width: '90%', m: 1 }}
-                        id="outlined-size-small"
-                        name="phone"
-                     
-                        defaultValue="Phone Number"
-                        size="small"
-                    />
-                    <TextField
-                        disabled
-                        sx={{ width: '90%', m: 1 }}
-                        id="outlined-size-small"
-                        defaultValue='sd'
-                        size="small"
-                    />
-                    <Button type="submit" variant="contained">Submit</Button>
-                </form>
-            </Box>
-        </Fade>
-    </Modal>
+         <Fade in={openPurchase}>
+                <Box sx={style}>
+                    <Typography id="transition-modal-title" variant="h6" component="h2">
+                        {name}
+                    </Typography>
+                    <form onSubmit={handleBookingSubmit}>
+                        <TextField
+                           
+                            sx={{ width: '90%', m: 1 }}
+                            id="outlined-size-small"
+                            defaultValue={price}
+                            size="small"
+                        />
+                        <TextField
+                            sx={{ width: '90%', m: 1 }}
+                            id="outlined-size-small"
+                            name="customerName"
+                            onBlur={handleOnBlur}
+                            defaultValue={user.displayName}
+                            size="small"
+                        />
+                        <TextField
+                            sx={{ width: '90%', m: 1 }}
+                            id="outlined-size-small"
+                            name="email"
+                            onBlur={handleOnBlur}
+                           
+                            label="Read Only"
+                            defaultValue={user.email}
+                            InputProps={{
+                              readOnly: true,
+                            }}
+                        />
+                        <TextField
+                            sx={{ width: '90%', m: 1 }}
+                            id="outlined-size-small"
+                            name="phone"
+                            onBlur={handleOnBlur}
+                            defaultValue="Phone Number"
+                            size="small"
+                        />
+                        <TextField
+                            
+                            sx={{ width: '90%', m: 1 }}
+                            id="outlined-size-small"
+                            defaultValue={name}
+                            size="small"
+                        />
+                        <Button type="submit" variant="contained">Submit</Button>
+                    </form>
+                </Box>
+            </Fade>
+        </Modal>
     );
 };
 

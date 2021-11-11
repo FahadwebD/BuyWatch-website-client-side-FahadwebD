@@ -11,7 +11,7 @@ const Details = () => {
 
     useEffect(()=>{
 
-        fetch('https://raw.githubusercontent.com/FahadwebD/data-test/main/watch.json')
+        fetch('http://localhost:5000/products')
         .then(res => res.json())
         .then(data => setProducts(data))
 
@@ -25,7 +25,7 @@ const Details = () => {
         if (products.length){
             const id = watchId;
     
-            const newP = products.find(w => w.id == id)
+            const newP = products.find(w => w.key == id)
             setDetail(newP)
         }
         
