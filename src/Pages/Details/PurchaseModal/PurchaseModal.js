@@ -52,7 +52,20 @@ const PurchaseModal = ({detail ,  openPurchase, handlePurchaseClose}) => {
             itemPrice:price
           
         }
-        console.log(ordered)
+
+        fetch('http://localhost:5000/orders',{
+            method: 'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(ordered)
+        })
+        .then(res => res.json())
+        .then(data=> {
+            console.log(data)
+        })
+        
+        handlePurchaseClose();
         e.preventDefault();
     }
 
