@@ -18,14 +18,20 @@ import LoginIcon from '@mui/icons-material/Login';
 import { Avatar, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-
+import useAuth from '../../../hooks/useAuth'
 
 
 
 
 const Navbar = () => {
+
+
+  const { user , logout} = useAuth();
+
+
         const [anchorEl, setAnchorEl] = React.useState(null);
         const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+       
       
         const isMenuOpen = Boolean(anchorEl);
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -66,6 +72,7 @@ const Navbar = () => {
           >
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={logout}>Log Out</MenuItem>
           </Menu>
         );
       
@@ -95,7 +102,7 @@ const Navbar = () => {
               <p>Order</p>
             </MenuItem>
             <MenuItem>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton as={Link} to='/explore' size="large" aria-label="show 4 new mails" color="inherit">
            <WatchTwoToneIcon/>
             </IconButton>
               <p>More Watches</p>
@@ -113,32 +120,10 @@ const Navbar = () => {
               </IconButton>
               <p>Notifications</p>
             </MenuItem>
-            <MenuItem>
             
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <p>Notifications</p>
-          </MenuItem>
-          <MenuItem onClick={handleProfileMenuOpen}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="primary-search-account-menu"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <LoginIcon fontSize="small" />
-              </IconButton>
-              <p>Login</p>
-            </MenuItem>
-            {/* <MenuItem onClick={handleProfileMenuOpen}>
+
+          {user?.email ? 
+              <MenuItem onClick={handleProfileMenuOpen}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -149,13 +134,25 @@ const Navbar = () => {
                 <Avatar alt="Remy Sharp" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGZhY2VzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" />
               </IconButton>
               <p>Profile</p>
-            </MenuItem> */}
+            </MenuItem> : <MenuItem onClick={handleProfileMenuOpen}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <LoginIcon fontSize="small" />
+              </IconButton>
+              <p>Login</p>
+            </MenuItem> }
           </Menu>
         );
     
     return (
         <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="inherit">
+
+      <AppBar position="static" style={{backgroundColor:"#fbb72c"}}>
         <Toolbar>
           <IconButton
             size="large"
@@ -181,7 +178,7 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit" title="More Watches">
+            <IconButton  as={Link} to='/explore' size="large" aria-label="show 4 new mails" color="inherit" title="More Watches">
             <WatchTwoToneIcon/>
             </IconButton>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -198,7 +195,19 @@ const Navbar = () => {
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            <IconButton
+
+            {user?.email? <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+            
+             <Avatar alt="Remy Sharp" src="https://www.pinclipart.com/picdir/big/181-1818368_picture-black-and-white-stock-svg-png-icon.png" />
+            </IconButton> : <IconButton
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
@@ -208,18 +217,7 @@ const Navbar = () => {
                <LoginIcon />
                 
               
-            </IconButton>
-            {/* <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-             <Avatar alt="Remy Sharp" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGZhY2VzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" />
-            </IconButton> */}
+            </IconButton>}
            
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>

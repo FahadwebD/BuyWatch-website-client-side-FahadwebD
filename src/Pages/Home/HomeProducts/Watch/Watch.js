@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Watch = ({watch}) => {
  
-    console.log(watch)
+    
     const {name , id} = watch
     const url = `/details/${id}`
   
