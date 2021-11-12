@@ -1,0 +1,8 @@
+
+@media (max-width: 780px) {
+    .table {
+        width:'95%';
+        display:'block';
+        overflow-x:'auto'
+        }
+}

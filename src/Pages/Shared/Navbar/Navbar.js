@@ -73,7 +73,7 @@ const Navbar = () => {
             <MenuItem onClick={handleMenuClose}>{user?.displayName}</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
             <MenuItem onClick={logout}>Log Out</MenuItem>
-            <MenuItem  ><Link to='dashboard'>Dashboard</Link></MenuItem>
+            <MenuItem  ><Link to='sdashboard'>Dashboard</Link></MenuItem>
           </Menu>
         );
       
@@ -210,7 +210,7 @@ const Navbar = () => {
             
              <Avatar alt="Remy Sharp" src="https://www.pinclipart.com/picdir/big/181-1818368_picture-black-and-white-stock-svg-png-icon.png" />
             </IconButton>
-            <Link to='dashboard'>Dashboard</Link>
+            <Link to='sdashboard'>Dashboard</Link>
             </Box> : <IconButton
               size="large"
               aria-label="show 17 new notifications"

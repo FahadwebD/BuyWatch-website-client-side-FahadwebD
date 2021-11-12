@@ -22,14 +22,15 @@ function App() {
        <Route exact path='/'>
        <Home/>
        </Route>
-       <PrivateRoute exact path='/details/:watchId'>
-       <Details></Details>
-       </PrivateRoute>
+       
        <PrivateRoute exact path ='/explore'>
          <MoreWatches></MoreWatches>
        </PrivateRoute>
-       <PrivateRoute exact path ='/dashboard'>
+       <PrivateRoute  path ='/sdashboard'>
          <Dashboard></Dashboard>
+       </PrivateRoute>
+       <PrivateRoute  path='/details/:watchId'>
+       <Details></Details>
        </PrivateRoute>
      </Switch>
      <Route exact path='/login'>

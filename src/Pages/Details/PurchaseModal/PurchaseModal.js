@@ -27,7 +27,8 @@ const style = {
 
 const PurchaseModal = ({detail ,  openPurchase, handlePurchaseClose}) => {
     
-    const {name ,price ,key} = detail;
+    const {name,price,key} = detail;
+    console.log(detail)
     const{user} = useAuth();
     
     const initialInfo = { customerName: user.displayName, email: user.email, phone: '' }
