@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../Shared/Navbar/Navbar';
 import Footer from '../../Shared/Footer/Footer'
-import { Container } from '@mui/material';
+import { CircularProgress, Container, dividerClasses } from '@mui/material';
 import MoreWatchesCard from '../MoreWatchesCard/MoreWatchesCard';
 
 
@@ -20,7 +20,8 @@ const MoreWatches = () => {
     console.log(products)
 
     return (
-        <div>
+       <div>
+          {products?<div>
             <Navbar></Navbar>
             <Container>
             <div className='products-grid'>
@@ -33,7 +34,10 @@ const MoreWatches = () => {
         </div>
         </Container>
             <Footer></Footer>
-        </div>
+        </div>:<Container sx={{marginTop:'300px'}}>
+               <CircularProgress></CircularProgress>
+           </Container>}
+       </div>
     );
 };
 

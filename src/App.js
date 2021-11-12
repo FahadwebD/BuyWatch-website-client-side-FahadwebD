@@ -10,6 +10,7 @@ import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 
 import MoreWatches from './Pages/MoreWatch/MoreWatches/MoreWatches';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
        </PrivateRoute>
        <PrivateRoute exact path ='/explore'>
          <MoreWatches></MoreWatches>
+       </PrivateRoute>
+       <PrivateRoute exact path ='/dashboard'>
+         <Dashboard></Dashboard>
        </PrivateRoute>
      </Switch>
      <Route exact path='/login'>
