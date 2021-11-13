@@ -111,7 +111,8 @@ const Navbar = () => {
             
 
           {user?.email ? 
-              <MenuItem onClick={handleProfileMenuOpen}>
+              <div>
+                <MenuItem onClick={handleProfileMenuOpen}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -122,7 +123,14 @@ const Navbar = () => {
                 <Avatar alt="Remy Sharp" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGZhY2VzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" />
               </IconButton>
               <p>{user?.displayName}</p>
-            </MenuItem> : <MenuItem>
+            </MenuItem>
+            <MenuItem >
+              <Button onClick={logout}>Logout</Button>
+            </MenuItem>
+            <MenuItem >
+              <Link to='/sdashboard'><Button>Dashboard</Button></Link>
+            </MenuItem>
+              </div> : <MenuItem>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -160,7 +168,7 @@ const Navbar = () => {
             component="div"
             sx={{ display: {  mr: 2 } }}
           >
-            Buy Watch
+           <Link to='/'> Buy Watch</Link>
           </Typography>
         
           
