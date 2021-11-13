@@ -32,6 +32,7 @@ import useAuth from '../../../hooks/useAuth';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import AllOrder from '../AllOrder/AllOrder';
 import AdminAddProduct from '../AdminAddProduct/AdminAddProduct';
+import ManageProduct from '../ManageProduct/ManageProduct';
 
 const drawerWidth = 200;
 
@@ -57,7 +58,8 @@ function Dashboard(props) {
       
       <List>
       {admin?<div style={{display:'flex' , flexDirection:'column' }}><div>
-      <Link to={`${url}/makeAdmin`}><Button color="inherit" >Make Admin</Button></Link></div><div> <Link to={`${url}/addProduct`}><Button color="inherit" >Add Product</Button></Link></div><div><Link to={`${url}`}><Button>TotalOrder</Button></Link></div></div>:<div style={{display:'flex' , flexDirection:'column' }}>
+      <Link to={`${url}/makeAdmin`}><Button color="inherit" >Make Admin</Button></Link></div><div>
+      <Link to={`${url}/manageProduct`}><Button color="inherit" >Manage Product</Button></Link></div><div> <Link to={`${url}/addProduct`}><Button color="inherit" >Add Product</Button></Link></div><div><Link to={`${url}`}><Button>TotalOrder</Button></Link></div></div>:<div style={{display:'flex' , flexDirection:'column' }}>
       <div><Link to={`${url}`}><Button>Order</Button></Link></div>
       <div>
       <div><Link to={`${url}/addReview`}><Button>Review</Button></Link></div>
@@ -98,7 +100,7 @@ function Dashboard(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+            {admin?'Admin Dashboard':'User Dashboard'}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -148,6 +150,9 @@ function Dashboard(props) {
         </AdminRoute>
         <AdminRoute exact path={`${path}/addProduct`}>
           <AdminAddProduct></AdminAddProduct>
+        </AdminRoute>
+        <AdminRoute exact path={`${url}/manageProduct`}>
+          <ManageProduct></ManageProduct>
         </AdminRoute>
         <Route exact path={`${url}/addReview`}>
           <Reviews></Reviews>

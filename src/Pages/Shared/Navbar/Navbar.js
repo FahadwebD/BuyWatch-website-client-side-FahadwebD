@@ -56,25 +56,25 @@ const Navbar = () => {
         const menuId = 'primary-search-account-menu';
         const renderMenu = (
           <Menu
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            id={menuId}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={isMenuOpen}
-            onClose={handleMenuClose}
-          >
-            <MenuItem onClick={handleMenuClose}>{user?.displayName}</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-            <MenuItem onClick={logout}>Log Out</MenuItem>
-            <MenuItem  ><Link to='/sdashboard'>Dashboard</Link></MenuItem>
-          </Menu>
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          id={menuId}
+          keepMounted
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          open={isMenuOpen}
+          onClose={handleMenuClose}
+        >
+          <MenuItem onClick={handleMenuClose}>{user?.displayName}</MenuItem>
+          <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+          <MenuItem onClick={logout}>Log Out</MenuItem>
+          <MenuItem  ><Link to='/sdashboard'>Dashboard</Link></MenuItem>
+        </Menu>
         );
       
         const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -108,19 +108,7 @@ const Navbar = () => {
             </IconButton>
               <p>More Watches</p>
             </MenuItem>
-            <MenuItem>
-            
-              <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
-                <Badge badgeContent={17} color="error">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <p>Notifications</p>
-            </MenuItem>
+           
             
 
           {user?.email ? 
@@ -135,13 +123,15 @@ const Navbar = () => {
                 <Avatar alt="Remy Sharp" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGZhY2VzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" />
               </IconButton>
               <p>{user?.displayName}</p>
-            </MenuItem> : <MenuItem onClick={handleProfileMenuOpen}>
+            </MenuItem> : <MenuItem>
               <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="primary-search-account-menu"
                 aria-haspopup="true"
                 color="inherit"
+                as={Link}
+                to='/login'
               >
                 <LoginIcon fontSize="small" />
               </IconButton>
@@ -180,22 +170,9 @@ const Navbar = () => {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               
             <IconButton  as={Link} to='/explore' size="large" aria-label="show 4 new mails" color="inherit" title="More Watches">
-            <WatchTwoToneIcon/>
+            <WatchTwoToneIcon/> More Watch
             </IconButton>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-              <AddShoppingCartIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+            
 
             {user?.email?<Box>
               <IconButton

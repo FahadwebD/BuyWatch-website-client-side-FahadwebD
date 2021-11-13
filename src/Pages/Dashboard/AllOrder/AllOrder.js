@@ -19,18 +19,18 @@ const AllOrder = () => {
     const [approved , setApproved] = useState(false)
 
     useEffect(()=>{
-        const url =`http://localhost:5000/orders`
+        const url =`https://mysterious-gorge-62564.herokuapp.com/orders`
         fetch(url)
         .then(res => res.json())
         .then(data => setOrders(data))
     },[])
     
-    
+    setDeliveryReport('approved')
     
     const handleOrderStatus = (_id)=>{
-        setDeliveryReport('approved')
+       
         const newStatus = {report:deliveryReport}
-        fetch(`http://localhost:5000/orders/${_id}` , {
+        fetch(`https://mysterious-gorge-62564.herokuapp.com/orders/${_id}` , {
             method:'PUT',
             headers: {
                 'content-type':'application/json'
@@ -47,7 +47,7 @@ const AllOrder = () => {
      }
     const handleOrderDelete = (_id) =>{
            console.log(_id)
-           const url=`http://localhost:5000/orders/${_id}`
+           const url=`https://mysterious-gorge-62564.herokuapp.com/orders/${_id}`
            fetch(url, {
              method:'DELETE'
            })
@@ -69,7 +69,7 @@ const AllOrder = () => {
 
     return (
         <div>
-            <h1>Total Order {orders.length}</h1>
+            <h1>Total Product {orders.length}</h1>
             <TableContainer component={Paper}>
       <Table className='table' sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>

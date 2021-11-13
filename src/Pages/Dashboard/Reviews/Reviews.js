@@ -16,7 +16,7 @@ const Reviews = () => {
 
     const addReview = ()=>{
         const review = {feedBack:value , rating:valueRating};
-        fetch('http://localhost:5000/reviews/add' , {
+        fetch('https://mysterious-gorge-62564.herokuapp.com/reviews/add' , {
             method:'POST',
             headers:{
                 'content-type': 'application/json'
