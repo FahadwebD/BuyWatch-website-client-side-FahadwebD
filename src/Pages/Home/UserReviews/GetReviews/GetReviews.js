@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReviewCard from '../ReviewCards/ReviewCard';
 
 const GetReviews = () => {
 
     const [review , setReview] = useState([])
+
+  useEffect(()=>{
     fetch('http://localhost:5000/reviews')
     .then(res=>res.json())
     .then(data=>setReview(data))
+  },[])
+
+    
     return (
         <div className='products-grid'>
             {

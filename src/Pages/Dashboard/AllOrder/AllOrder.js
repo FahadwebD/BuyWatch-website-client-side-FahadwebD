@@ -16,6 +16,7 @@ const AllOrder = () => {
  
 
     const [orders , setOrders] = useState([])
+    const [approved , setApproved] = useState(false)
 
     useEffect(()=>{
         const url =`http://localhost:5000/orders`
@@ -37,7 +38,12 @@ const AllOrder = () => {
             body: JSON.stringify(newStatus)
         })
         .then(res=> res.json())
-        .then(data=> console.log(data))
+        .then(data=> {
+          if(data.matchedCount === 1){
+            alert('approved')
+            setApproved(true)
+          }
+        })
      }
     const handleOrderDelete = (_id) =>{
            console.log(_id)
