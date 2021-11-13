@@ -22,15 +22,15 @@ const Footer = () => {
 
       <ul className="nav__ul">
         <li>
-          <a href="#">Online</a>
+          <a href="/#">Online</a>
         </li>
 
         <li>
-          <a href="#">Print</a>
+          <a href="/#">Print</a>
         </li>
             
         <li>
-          <a href="#">Alternative Ads</a>
+          <a href="/#">Alternative Ads</a>
         </li>
       </ul>
     </li>
@@ -40,27 +40,27 @@ const Footer = () => {
       
       <ul className="nav__ul nav__ul--extra">
         <li>
-          <a href="#">Hardware Design</a>
+          <a href="/#">Hardware Design</a>
         </li>
         
         <li>
-          <a href="#">Software Design</a>
+          <a href="#/">Software Design</a>
         </li>
         
         <li>
-          <a href="#">Digital Signage</a>
+          <a href="/#">Digital Signage</a>
         </li>
         
         <li>
-          <a href="#">Automation</a>
+          <a href="#/">Automation</a>
         </li>
         
         <li>
-          <a href="#">Artificial Intelligence</a>
+          <a href="#/">Artificial Intelligence</a>
         </li>
         
         <li>
-          <a href="#">IoT</a>
+          <a href="#/">IoT</a>
         </li>
       </ul>
     </li>
@@ -70,25 +70,25 @@ const Footer = () => {
       
       <ul className="nav__ul">
         <li>
-          <a href="#">Privacy Policy</a>
+          <a href="#/">Privacy Policy</a>
         </li>
         
         <li>
-          <a href="#">Terms of Use</a>
+          <a href="#/">Terms of Use</a>
         </li>
         
         <li>
-          <a href="#">Sitemap</a>
+          <a href="#/">Sitemap</a>
         </li>
       </ul>
     </li>
   </ul>
   
   <div className="legal">
-    <p>&copy; 2019 Something. All rights reserved.</p>
+    <p>&copy; 2021 Fahad. All rights reserved.</p>
     
     <div className="legal__links">
-      <span>Made with <span className="heart">♥</span> remotely from Anywhere</span>
+      <span>Made with <span className="heart">♥</span> Develop by Fahad</span>
     </div>
   </div>
 </div> 

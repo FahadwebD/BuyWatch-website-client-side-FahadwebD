@@ -11,12 +11,12 @@ import { Button } from '@mui/material';
 
 
 const AllOrder = () => {
-    const {user , deliveryReport,
+    const { deliveryReport,
         setDeliveryReport } = useAuth();
  
 
     const [orders , setOrders] = useState([])
-    const [approved , setApproved] = useState(false)
+    const [ setApproved] = useState(false)
 
     useEffect(()=>{
         const url =`https://mysterious-gorge-62564.herokuapp.com/orders`
