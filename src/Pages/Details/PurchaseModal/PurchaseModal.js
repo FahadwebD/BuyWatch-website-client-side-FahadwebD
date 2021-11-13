@@ -51,7 +51,7 @@ const PurchaseModal = ({detail ,  openPurchase, handlePurchaseClose}) => {
             item: name,
             itemId:key,
             itemPrice:price,
-            report:deliveryReport
+            report:'pending'
           
         }
 
