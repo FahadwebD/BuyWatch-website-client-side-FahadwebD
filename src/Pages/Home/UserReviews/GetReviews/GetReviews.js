@@ -13,13 +13,17 @@ const GetReviews = () => {
 
     
     return (
-        <div className='products-grid'>
+        <div>
+          <h1>Coutomer Feedback</h1>
+          <br/>
+          <div className='products-grid'>
             {
                 review.map(r=> <ReviewCard
                 key={r._id}
                 r={r}
                 ></ReviewCard>)
             }
+        </div>
         </div>
     );
 };

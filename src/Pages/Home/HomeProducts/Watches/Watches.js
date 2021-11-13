@@ -16,7 +16,10 @@ const Watches = () => {
     } , [])
 
     return (
+       
         <Container>
+            <h1>Best Watches</h1>
+            <br/>
             <div className='products-grid'>
             {
                 products.slice(0,6).map( watch=> <Watch 
