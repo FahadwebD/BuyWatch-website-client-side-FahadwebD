@@ -102,6 +102,8 @@ const useFirebase = () =>{
     .finally(()=> setIsLoading(false));
         
   }
+
+  const [deliveryReport , setDeliveryReport] = useState('Pending');
     return {
         user,
         admin,
@@ -109,7 +111,9 @@ const useFirebase = () =>{
         authError,
         registerUser,
         loginUser,
-        logout
+        logout,
+        deliveryReport,
+        setDeliveryReport
     }
 }
 

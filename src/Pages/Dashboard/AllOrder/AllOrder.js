@@ -8,21 +8,37 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
-import './Myorder.css'
 
-const Myorders = () => {
-    const {user} = useAuth();
-    console.log(user)
+
+const AllOrder = () => {
+    const {user , deliveryReport,
+        setDeliveryReport } = useAuth();
+ 
 
     const [orders , setOrders] = useState([])
 
     useEffect(()=>{
-        const url =`http://localhost:5000/orders/${user.email}`
+        const url =`http://localhost:5000/orders`
         fetch(url)
         .then(res => res.json())
         .then(data => setOrders(data))
     },[])
     
+    
+    
+    const handleOrderStatus = (_id)=>{
+        setDeliveryReport('approved')
+        const newStatus = {report:deliveryReport}
+        fetch(`http://localhost:5000/orders/${_id}` , {
+            method:'PUT',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(newStatus)
+        })
+        .then(res=> res.json())
+        .then(data=> console.log(data))
+     }
     const handleOrderDelete = (_id) =>{
            console.log(_id)
            const url=`http://localhost:5000/orders/${_id}`
@@ -33,7 +49,7 @@ const Myorders = () => {
            .then(data=>{
              if(data.deletedCount>0){
               
-               alert('deleye')
+               alert('delete')
             
                const remaining = orders.filter(order => order._id !== _id)
                
@@ -42,9 +58,12 @@ const Myorders = () => {
            })
          }
 
+
+       
+
     return (
         <div>
-            <h1>My orders{orders.length}</h1>
+            <h1>Total Order {orders.length}</h1>
             <TableContainer component={Paper}>
       <Table className='table' sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -54,7 +73,7 @@ const Myorders = () => {
             <TableCell align="right">Email</TableCell>
             <TableCell align="right">Watch</TableCell>
             <TableCell align="right">payment</TableCell>
-            <TableCell align="right">Status</TableCell>
+            <TableCell align="right">Delivery Report</TableCell>
             <TableCell align="right">Action</TableCell>
           </TableRow>
         </TableHead>
@@ -70,7 +89,7 @@ const Myorders = () => {
               <TableCell align="right">{row.email}</TableCell>
               <TableCell align="right">{row.item}</TableCell>
               <TableCell align="right">{row.itemPrice}</TableCell>
-              <TableCell align="right">{row.report}</TableCell>
+              <TableCell align="right"><Button onClick={()=>handleOrderStatus(row._id)}>Aprrove</Button></TableCell>
               <TableCell align="right"><Button onClick={()=>handleOrderDelete(row._id)}>Delete </Button></TableCell>
             </TableRow>
           ))}
@@ -81,4 +100,4 @@ const Myorders = () => {
     );
 };
 
-export default Myorders;
+export default AllOrder;

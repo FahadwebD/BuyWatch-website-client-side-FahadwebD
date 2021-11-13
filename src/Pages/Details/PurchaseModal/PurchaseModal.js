@@ -29,12 +29,12 @@ const PurchaseModal = ({detail ,  openPurchase, handlePurchaseClose}) => {
     
     const {name,price,key} = detail;
     console.log(detail)
-    const{user} = useAuth();
+    const{user ,deliveryReport} = useAuth();
     
     const initialInfo = { customerName: user.displayName, email: user.email, phone: '' }
     const [orderInfo, setOrderInfo] = useState(initialInfo);
+   
 
-  
  const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -50,7 +50,8 @@ const PurchaseModal = ({detail ,  openPurchase, handlePurchaseClose}) => {
            
             item: name,
             itemId:key,
-            itemPrice:price
+            itemPrice:price,
+            report:deliveryReport
           
         }
 
