@@ -1,6 +1,6 @@
 # Buy Watch
 
-This project Hosted On Firebase [Buy Watch](https://bd-tour-83cdb.web.app/).
+This project Hosted On Firebase [Buy Watch](https://buy-watch-bd.web.app/).
 
 
 ## Task Description: 
